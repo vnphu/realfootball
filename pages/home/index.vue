@@ -1,17 +1,20 @@
 <template>
   <div>
-    <div>Đây là trang home</div>
-    <search-abc />
+    <the-banner />
+    <banner-carousel style="margin-top: 4rem" />
   </div>
 </template>
 
 <script>
+import TheBanner from '@/components/Home/Banner'
+import BannerCarousel from '@/components/Home/BannerCarousel'
+
 export default {
   name: 'Home',
+  components: {
+    TheBanner,
+    BannerCarousel,
+  },
 }
 </script>
-<style lang="scss" scoped>
-div {
-  color: #000;
-}
-</style>
+<style lang="scss" scoped></style>

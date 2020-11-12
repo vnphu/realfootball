@@ -8,8 +8,4 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped>
-div {
-  color: #000;
-}
-</style>
+<style lang="scss" scoped></style>
