@@ -1,19 +1,19 @@
 <template>
   <div>
-    <the-banner />
     <banner-carousel style="margin-top: 4rem" />
+    <page-content />
   </div>
 </template>
 
 <script>
-import TheBanner from '@/components/Home/Banner'
 import BannerCarousel from '@/components/Home/BannerCarousel'
+import PageContent from '@/components/Home/PageContent'
 
 export default {
   name: 'Home',
   components: {
-    TheBanner,
     BannerCarousel,
+    PageContent,
   },
 }
 </script>

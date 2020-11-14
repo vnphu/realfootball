@@ -62,7 +62,11 @@
           <a-icon type="user" />
         </div>
         <div class="cart">
-          <a-icon type="shopping-cart" />
+          <a-icon type="shopping-cart" @click="isShow = !isShow" />
+          <div class="numberItem">
+            {{ cartItem.length }}
+          </div>
+          <cart v-if="isShow" class="showCart"> {{ cartItem }}</cart>
         </div>
       </div>
     </header>
@@ -72,6 +76,14 @@
 <script>
 export default {
   name: 'Menu',
+  data() {
+    return { isShow: false }
+  },
+  computed: {
+    cartItem() {
+      return this.$store.getters.cartItems
+    },
+  },
 }
 </script>
 
@@ -111,6 +123,27 @@ div {
         }
       }
     }
+  }
+}
+.cart {
+  position: relative;
+  .showCart {
+    position: fixed;
+    z-index: 9999000;
+    top: 9rem;
+    right: 0;
+    height: 100vh;
+  }
+  .numberItem {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 2rem;
+    height: 2rem;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    background: var(--gradient);
   }
 }
 </style>
