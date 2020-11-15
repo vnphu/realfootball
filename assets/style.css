@@ -9,9 +9,10 @@
   --white: #fff;
   --gray: #333;
   --black: #000000;
+  --red: #e74c3c;
   --font: "Poppins", sans-serif;
   --gradient: linear-gradient(40deg, #ff6ec4, #7873f5);
-  --shadow: 0 0 15px 0 rgba(0, 0, 0, 0.05);
+  --shadow: 0 0 15px 0 rgba(0, 0, 0, 0.5);
 }
 *,
 *:before,

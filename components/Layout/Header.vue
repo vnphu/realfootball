@@ -63,10 +63,10 @@
         </div>
         <div class="cart">
           <a-icon type="shopping-cart" @click="isShow = !isShow" />
-          <div class="numberItem">
+          <div class="numberItem" @click="isShow = !isShow">
             {{ cartItem.length }}
           </div>
-          <cart v-if="isShow" class="showCart"> {{ cartItem }}</cart>
+          <cart v-if="isShow" />
         </div>
       </div>
     </header>
@@ -127,13 +127,7 @@ div {
 }
 .cart {
   position: relative;
-  .showCart {
-    position: fixed;
-    z-index: 9999000;
-    top: 9rem;
-    right: 0;
-    height: 100vh;
-  }
+
   .numberItem {
     position: absolute;
     top: 0;

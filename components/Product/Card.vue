@@ -24,7 +24,20 @@ export default {
   },
   methods: {
     addToCart(data) {
-      this.$store.dispatch('addItemToCart', data)
+      // this.$store.dispatch('addItemToCart', data)
+      if (this.$store.dispatch('addItemToCart', data)) {
+        this.$notification.open({
+          message: 'Add Item To Cart',
+          description: 'Success',
+          icon: <a-icon type="check" style="color: green" />,
+        })
+      } else {
+        this.$notification.open({
+          message: 'Add Item To Cart',
+          description: 'Địt mẹ check lỗi đi',
+          icon: <a-icon type="close" style="color: red" />,
+        })
+      }
     },
   },
 }

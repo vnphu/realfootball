@@ -56,6 +56,8 @@ div {
     width: 100vw;
     display: flex;
     flex-wrap: wrap;
+    z-index: 1;
+    position: relative;
 
     .thecard {
       width: 23%;

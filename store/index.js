@@ -14,7 +14,7 @@ export const mutations = {
   },
 }
 
-export const acions = {
+export const actions = {
   addItemToCart: ({ commit, state }, payload) => {
     commit('ADD_ITEM_TO_CART', payload)
     localStorage.setItem('cart', JSON.stringify(state.cartItems))

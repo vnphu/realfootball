@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="banner-title">
     <img
       src="https://www.lovellsoccer.co.uk/cms/graphics/20-off-Thin-Banner-Recovered.jpg"
       alt="banner"
@@ -13,7 +13,9 @@ export default {
 }
 </script>
 <style lang="scss" scoped>
-div {
+.banner-title {
+  position: relative;
+  z-index: -1;
   height: 3.5rem;
   img {
     width: auto !important;

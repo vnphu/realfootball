@@ -6,14 +6,14 @@
           <div class="info">
             <div class="title">Enter your email to receive discount</div>
             <div class="mail">
-              <a-input-search
+              <input
+                v-model="email"
                 placeholder="Enter email"
-                enter-button="Submit"
                 required
                 type="email"
-                size="large"
-                @search="onSubmit"
+                @keyup.enter="onSubmit"
               />
+              <button @click="onSubmit">Submit</button>
             </div>
           </div>
         </li>
@@ -69,10 +69,13 @@
 
 <script>
 export default {
+  data() {
+    return { email: '' }
+  },
   methods: {
-    onSubmit(value) {
+    onSubmit() {
       const emailRegex = /^([A-Za-z0-9_\-.])+@([A-Za-z0-9_\-.])+\.([A-Za-z]{2,4})$/
-      const result = emailRegex.test(value)
+      const result = emailRegex.test(this.email)
       if (result) {
         this.$notification.open({
           message: 'Notification ',
@@ -92,17 +95,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.ant-btn-primary {
-  color: #fff;
-  background-color: black;
-  border-color: var(--white);
-  &:hover {
-    color: #fff;
-    background-color: black;
-    border-color: var(--white);
-    opacity: 0.7;
-  }
-}
 .info {
   // max-width: 40%;
   padding-top: 3rem;
@@ -116,6 +108,32 @@ export default {
     color: var(--white);
     font-size: 1.6rem;
     padding: 0.5rem;
+  }
+}
+.mail {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  input {
+    border-radius: 0.5rem;
+    width: 80%;
+    padding: 0.5rem;
+  }
+  button {
+    border-radius: 0.5rem;
+    // width: 80%;
+    margin-left: 0.2rem;
+    padding: 0.5rem 2rem;
+    background-color: #000;
+    color: var(--white);
+    border: 1px solid var(--white);
+    transition: all 0.4s;
+    &:active {
+      opacity: 0.3;
+    }
+    &:hover {
+      opacity: 0.3;
+    }
   }
 }
 .footer {
