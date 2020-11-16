@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="cartItem">
-      <img :src="data.image" alt="data.title" />
+      <img :src="data.image[0]" :alt="data.name" />
       <div class="title">
         {{ data.name }}
       </div>
@@ -23,9 +23,17 @@ export default {
     },
   },
   methods: {
-    addToCart(data) {
+    addToCart() {
       // this.$store.dispatch('addItemToCart', data)
-      if (this.$store.dispatch('addItemToCart', data)) {
+      // console.log(data, 'sads')
+      const payload = {
+        name: this.data.name,
+        image: this.data.image,
+        price: this.data.price,
+        id: this.data.id,
+        number: 1,
+      }
+      if (this.$store.dispatch('addItemToCart', payload)) {
         this.$notification.open({
           message: 'Add Item To Cart',
           description: 'Success',
@@ -34,7 +42,7 @@ export default {
       } else {
         this.$notification.open({
           message: 'Add Item To Cart',
-          description: 'Địt mẹ check lỗi đi',
+          description: 'Error',
           icon: <a-icon type="close" style="color: red" />,
         })
       }
@@ -47,8 +55,16 @@ div {
   .cartItem {
     width: 100%;
     position: relative;
+    &:hover {
+      .add {
+        opacity: 1;
+      }
+    }
     img {
       width: 100%;
+    }
+    .title {
+      color: var(--black);
     }
     .add {
       position: absolute;
@@ -57,11 +73,18 @@ div {
       transform: translate(-50%, -50%);
       color: var(--width);
       z-index: 9;
-      width: 2rem;
-      height: 2rem;
-      border-radius: 0.1rem solid #fff;
+      width: 6rem;
+      height: 6rem;
+      border-radius: 50%;
       font-size: 3rem;
       cursor: pointer;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: var(--secondary);
+      box-shadow: var(--shadow);
+      transition: all 0.4s;
+      opacity: 0;
     }
   }
 }

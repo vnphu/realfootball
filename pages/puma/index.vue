@@ -17,7 +17,6 @@
       >
         {{ item }}
       </the-card>
-
       <div class="showMore">
         <a-button type="danger" @click.prevent="onShowSizeChange">
           Show more
@@ -31,12 +30,14 @@
 import TheCard from '@/components/Product/Card'
 
 export default {
-  name: 'Home',
+  name: 'Nike',
   components: {
     TheCard,
   },
   async fetch() {
-    this.data = await this.$axios.$get(`/product?limit= ${this.pageSize}`)
+    this.data = await this.$axios.$get(
+      `/product/filter?tradeMark=puma&limit=${this.pageSize}`
+    )
   },
   data() {
     return {
@@ -47,7 +48,6 @@ export default {
   create() {
     this.fetch()
   },
-
   methods: {
     onShowSizeChange(pageSize) {
       this.pageSize += 8
@@ -89,7 +89,6 @@ div {
     width: 100%;
     display: flex;
     flex-wrap: wrap;
-    // justify-content: center;
     z-index: 1;
     position: relative;
 

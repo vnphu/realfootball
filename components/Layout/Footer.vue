@@ -56,11 +56,11 @@
       </div>
       <div class="title">
         <ul>
+          <li><nuxt-link to="#"> © 2020 Lovell Soccer </nuxt-link></li>
           <li><nuxt-link to="#"> Company Information</nuxt-link></li>
-          <li><nuxt-link to="#"> Company Information</nuxt-link></li>
-          <li><nuxt-link to="#"> Company Information</nuxt-link></li>
-          <li><nuxt-link to="#"> Company Information</nuxt-link></li>
-          <li><nuxt-link to="#"> Company Information</nuxt-link></li>
+          <li><nuxt-link to="#"> Private</nuxt-link></li>
+          <li><nuxt-link to="#"> Terms and conditions</nuxt-link></li>
+          <li><nuxt-link to="#"> Cookies</nuxt-link></li>
         </ul>
       </div>
     </div>

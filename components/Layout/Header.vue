@@ -3,56 +3,37 @@
     <div class="title">QUICK AND EASY RETURNS</div>
     <header>
       <div class="logo">
-        <img
-          src="https://www.lovellsoccer.co.uk/images/soccer/logo.svg?1"
-          alt="Logo"
-        />
+        <nuxt-link to="/">
+          <img
+            src="https://www.lovellsoccer.co.uk/images/soccer/logo.svg?1"
+            alt="Logo"
+          />
+        </nuxt-link>
       </div>
       <div class="menu">
-        <a-menu mode="horizontal">
-          <a-sub-menu>
-            <span slot="title" class="submenu-title-wrapper"> Nike </span>
-            <a-menu-item-group title="Item 1">
-              <a-menu-item key="setting:1"> Option 1 </a-menu-item>
-              <a-menu-item key="setting:2"> Option 2 </a-menu-item>
-            </a-menu-item-group>
-          </a-sub-menu>
-          <a-sub-menu>
-            <span slot="title" class="submenu-title-wrapper"> Adidas </span>
-            <a-menu-item-group title="Item 1">
-              <a-menu-item key="setting:1"> Option 1 </a-menu-item>
-              <a-menu-item key="setting:2"> Option 2 </a-menu-item>
-            </a-menu-item-group>
-          </a-sub-menu>
-          <a-sub-menu>
-            <span slot="title" class="submenu-title-wrapper"> Nike </span>
-            <a-menu-item-group title="Item 1">
-              <a-menu-item key="setting:1"> Option 1 </a-menu-item>
-              <a-menu-item key="setting:2"> Option 2 </a-menu-item>
-            </a-menu-item-group>
-          </a-sub-menu>
-          <a-sub-menu>
-            <span slot="title" class="submenu-title-wrapper"> Adidas </span>
-            <a-menu-item-group title="Item 1">
-              <a-menu-item key="setting:1"> Option 1 </a-menu-item>
-              <a-menu-item key="setting:2"> Option 2 </a-menu-item>
-            </a-menu-item-group>
-          </a-sub-menu>
-          <a-sub-menu>
-            <span slot="title" class="submenu-title-wrapper"> Adidas </span>
-            <a-menu-item-group title="Item 1">
-              <a-menu-item key="setting:1"> Option 1 </a-menu-item>
-              <a-menu-item key="setting:2"> Option 2 </a-menu-item>
-            </a-menu-item-group>
-          </a-sub-menu>
-          <a-sub-menu>
-            <span slot="title" class="submenu-title-wrapper"> Adidas </span>
-            <a-menu-item-group title="Item 1">
-              <a-menu-item key="setting:1"> Option 1 </a-menu-item>
-              <a-menu-item key="setting:2"> Option 2 </a-menu-item>
-            </a-menu-item-group>
-          </a-sub-menu>
-        </a-menu>
+        <ul>
+          <li>
+            <nuxt-link to="product">All Product</nuxt-link>
+          </li>
+          <li>
+            <nuxt-link to="nike">Nike</nuxt-link>
+          </li>
+          <li>
+            <nuxt-link to="adidas">Adidas</nuxt-link>
+          </li>
+          <li>
+            <nuxt-link to="puma">Puma</nuxt-link>
+          </li>
+          <li>
+            <nuxt-link to="newbalance">new Balance</nuxt-link>
+          </li>
+          <li>
+            <nuxt-link to="mizuno">Mizuno</nuxt-link>
+          </li>
+          <li>
+            <nuxt-link to="underarmour">Under Armour</nuxt-link>
+          </li>
+        </ul>
       </div>
       <div class="service">
         <div class="search">
@@ -62,11 +43,12 @@
           <a-icon type="user" />
         </div>
         <div class="cart">
-          <a-icon type="shopping-cart" @click="isShow = !isShow" />
-          <div class="numberItem" @click="isShow = !isShow">
-            {{ cartItem.length }}
-          </div>
-          <cart v-if="isShow" />
+          <nuxt-link to="/cart">
+            <a-icon type="shopping-cart" />
+            <div class="numberItem">
+              {{ cartItem.length }}
+            </div>
+          </nuxt-link>
         </div>
       </div>
     </header>
@@ -76,9 +58,7 @@
 <script>
 export default {
   name: 'Menu',
-  data() {
-    return { isShow: false }
-  },
+
   computed: {
     cartItem() {
       return this.$store.getters.cartItems
@@ -104,11 +84,30 @@ div {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 1rem 2rem;
+    padding: 2rem 2rem;
     .menu {
-      font-size: 1.2rem;
-      .ant-menu {
-        border: initial;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      ul {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-bottom: initial;
+        li {
+          padding: 1rem 1.5rem;
+          a {
+            color: var(--gray);
+            font-weight: 500;
+            transition: all 0.3s;
+            &:hover {
+              color: var(--purple);
+            }
+            &.nuxt-link-exact-active {
+              color: var(--pink);
+            }
+          }
+        }
       }
     }
     .service {
@@ -127,17 +126,20 @@ div {
 }
 .cart {
   position: relative;
-
-  .numberItem {
-    position: absolute;
-    top: 0;
-    right: 0;
-    width: 2rem;
-    height: 2rem;
-    border-radius: 50%;
-    display: flex;
-    justify-content: center;
-    background: var(--gradient);
+  a {
+    color: var(--gray);
+    position: relative;
+    .numberItem {
+      position: absolute;
+      top: -1.3rem;
+      right: -0.4rem;
+      width: 2rem;
+      height: 2rem;
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      background: var(--gradient);
+    }
   }
 }
 </style>
