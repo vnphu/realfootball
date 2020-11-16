@@ -25,7 +25,7 @@
             <nuxt-link to="puma">Puma</nuxt-link>
           </li>
           <li>
-            <nuxt-link to="newbalance">new Balance</nuxt-link>
+            <nuxt-link to="newbalance">New Balance</nuxt-link>
           </li>
           <li>
             <nuxt-link to="mizuno">Mizuno</nuxt-link>

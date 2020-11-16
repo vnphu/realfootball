@@ -56,11 +56,19 @@ export default {
       })
     },
     removeThing(id) {
-      this.$store.commit('outCart', id)
-      this.$notification.open({
-        message: 'Remove Item',
-        description: 'Success',
-        icon: <a-icon type="check" style="color: green" />,
+      this.$confirm({
+        title: 'Are you sure you want to delete?',
+        okType: 'danger',
+        okText: 'OK',
+        cancelText: 'Cancel',
+        onOk: () => {
+          this.$store.commit('outCart', id)
+          this.$notification.open({
+            message: 'Remove Item',
+            description: 'Success',
+            icon: <a-icon type="check" style="color: green" />,
+          })
+        },
       })
     },
   },
