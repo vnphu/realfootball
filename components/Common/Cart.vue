@@ -12,7 +12,12 @@
               <div class="name">{{ item.name }}</div>
               <div class="price">Price: {{ item.price }} $</div>
             </div>
-            <a-tag> X{{ item.number }}</a-tag>
+            <div class="out">
+              <a-tag> X{{ item.number }}</a-tag>
+              <a-tag color="red" class="delete" @click="removeThing(item.id)">
+                Delete
+              </a-tag>
+            </div>
           </div>
         </div>
       </div>
@@ -20,7 +25,7 @@
         <div class="total">
           <a-tag color="red"> Total: {{ total }} $</a-tag>
         </div>
-        <button @click="onPay">Pay</button>
+        <button @click="onPay">Payment</button>
       </div>
     </div>
     <div v-else>Empty</div>
@@ -45,7 +50,15 @@ export default {
   methods: {
     onPay() {
       this.$notification.open({
-        message: 'Pay',
+        message: 'Payment',
+        description: 'Success',
+        icon: <a-icon type="check" style="color: green" />,
+      })
+    },
+    removeThing(id) {
+      this.$store.commit('outCart', id)
+      this.$notification.open({
+        message: 'Remove Item',
         description: 'Success',
         icon: <a-icon type="check" style="color: green" />,
       })
@@ -101,6 +114,10 @@ export default {
         height: 10rem;
         margin: 1rem 2rem;
       }
+      .name {
+        color: var(--black);
+        font-weight: 500;
+      }
       .price {
         color: var(--red);
       }
@@ -110,6 +127,11 @@ export default {
         display: flex;
         justify-content: space-between;
         align-items: center;
+      }
+      .out {
+        .delete {
+          cursor: pointer;
+        }
       }
     }
   }

@@ -12,6 +12,10 @@ export const mutations = {
   ADD_ITEM_TO_CART: (state, payload) => {
     state.cartItems.push(payload)
   },
+  outCart(state, n) {
+    const index = state.cartItems.findIndex((x) => x.id === n)
+    return state.cartItems.splice(index, 1)
+  },
 }
 
 export const actions = {
