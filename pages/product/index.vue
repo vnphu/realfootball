@@ -2,7 +2,7 @@
   <div class="container">
     <div class="search">
       <input
-        v-model="datasearch"
+        v-model="search"
         type="text"
         placeholder="Enter name to search"
         @keyup.enter="onSearch"
@@ -42,18 +42,36 @@ export default {
     return {
       data: [],
       pageSize: 8,
+      search: '',
     }
   },
   create() {
     this.fetch()
   },
+  // computed: {
+  //   toSearch() {
+  //     return this.data.filter((data) => {
+  //       return data.name.toLowerCase().includes(this.search.toLowerCase())
+  //     })
+  //   },
+  // },
 
+  computed: {
+    filteredList() {
+      return this.postList.filter((post) => {
+        return post.title.toLowerCase().includes(this.search.toLowerCase())
+      })
+    },
+  },
   methods: {
     onShowSizeChange(pageSize) {
       this.pageSize += 8
       this.$fetch()
     },
-    onSearch() {
+    onSearch(data) {
+      // return data.filter((x) => {
+      //   return x.name.toLowerCase().includes(this.search.toLowerCase())
+      // })
       this.$notification.open({
         message: 'Search',
         description: 'Chức năng này đang phát triển',
