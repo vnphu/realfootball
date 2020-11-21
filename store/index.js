@@ -14,7 +14,8 @@ export const mutations = {
   },
   outCart(state, n) {
     const index = state.cartItems.findIndex((x) => x.id === n)
-    return state.cartItems.splice(index, 1)
+    state.cartItems.splice(index, 1)
+    return localStorage.setItem('cart', JSON.stringify(state.cartItems))
   },
 }
 

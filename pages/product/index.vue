@@ -10,7 +10,7 @@
     </div>
     <div class="product">
       <the-card
-        v-for="item in data.data"
+        v-for="item in filteredList"
         :key="item.id"
         :data="item"
         class="thecard"
@@ -36,7 +36,8 @@ export default {
     TheCard,
   },
   async fetch() {
-    this.data = await this.$axios.$get(`/product?limit= ${this.pageSize}`)
+    const result = await this.$axios.$get(`/product?limit= ${this.pageSize}`)
+    return (this.data = result.data)
   },
   data() {
     return {
@@ -45,33 +46,20 @@ export default {
       search: '',
     }
   },
-  create() {
-    this.fetch()
-  },
-  // computed: {
-  //   toSearch() {
-  //     return this.data.filter((data) => {
-  //       return data.name.toLowerCase().includes(this.search.toLowerCase())
-  //     })
-  //   },
-  // },
-
   computed: {
     filteredList() {
-      return this.postList.filter((post) => {
-        return post.title.toLowerCase().includes(this.search.toLowerCase())
+      return this.data.filter((post) => {
+        return post.name.toLowerCase().includes(this.search.toLowerCase())
       })
     },
   },
+
   methods: {
     onShowSizeChange(pageSize) {
       this.pageSize += 8
       this.$fetch()
     },
     onSearch(data) {
-      // return data.filter((x) => {
-      //   return x.name.toLowerCase().includes(this.search.toLowerCase())
-      // })
       this.$notification.open({
         message: 'Search',
         description: 'Chức năng này đang phát triển',
